@@ -1,0 +1,10 @@
+<h2>Item Info</h2>
+
+<p><a href="{% url 'groceryapp:grocerieslist' %}">Back</a></p>
+<p>Name: {{ groceries.name }}</p>
+<p>Quantity: {{ groceries.quantity }}</p>
+
+<a href="{% url 'groceryapp:groceriesupdate' groceries.id %}">Edit</a>
+<br>
+<a href="{% url 'groceryapp:groceriesdelete' groceries.id %}">Delete</a>
+

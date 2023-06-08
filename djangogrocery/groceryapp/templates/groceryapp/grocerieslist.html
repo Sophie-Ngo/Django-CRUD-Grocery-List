@@ -1,0 +1,12 @@
+<h1>Grocery List</h1>
+{% if groceries %}
+    <ul>
+        {% for grocery in groceries %}
+            <li><a href="{% url 'groceryapp:groceriesdetail' grocery.id %}">{{ grocery.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Your grocery list is empty!</p>
+{% endif %}
+
+<a href="{% url 'groceryapp:groceriescreate' %}">Add Grocery</a>

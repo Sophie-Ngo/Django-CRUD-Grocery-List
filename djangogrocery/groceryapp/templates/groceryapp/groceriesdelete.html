@@ -1,0 +1,9 @@
+<h2>Delete {{ groceries.name }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ groceries.name }}?</p>
+    <button type="submit">Confirm</button>
+</form>
+<br>
+<a href="{% url 'groceryapp:groceriesdetail' groceries.id %}">No, go back!</a> 
