@@ -10,4 +10,8 @@ urlpatterns = [
     path('create/', views.GroceriesCreateView.as_view(), name='groceriescreate'),
     path('<int:pk>/update/', views.GroceriesUpdateView.as_view(), name='groceriesupdate'),
     path('<int:pk>/delete/', views.GroceriesDeleteView.as_view(), name='groceriesdelete'),
+
+    # api
+    path('item/', views.GroceriesListApi.as_view()),
+    path('item/<int:pk>', views.GroceriesDetailApi.as_view()),
 ]

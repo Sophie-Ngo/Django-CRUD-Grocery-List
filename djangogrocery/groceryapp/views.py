@@ -4,6 +4,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Groceries
 from .forms import GroceriesForm
 
+# api imports
+from rest_framework import generics
+from .serializers import GroceriesSerializer
+
 # Lists all groceries in alphabetical order.
 class GroceriesListView(ListView):
     model = Groceries
@@ -43,3 +47,19 @@ class GroceriesDeleteView(DeleteView):
     model = Groceries
     template_name = 'groceryapp/groceriesdelete.html'
     success_url = '/groceryapp/'
+
+
+# ------------- api stuff ------------- #
+
+# endpoint for getting all groceries as a list
+class GroceriesListApi(generics.ListCreateAPIView):
+    serializer_class = GroceriesSerializer
+
+    def get_queryset(self):
+        queryset = Groceries.objects.all()
+        return queryset
+    
+# endpoint for getting detail of a specific grocery
+class GroceriesDetailApi(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = GroceriesSerializer
+    queryset = Groceries.objects.all()
